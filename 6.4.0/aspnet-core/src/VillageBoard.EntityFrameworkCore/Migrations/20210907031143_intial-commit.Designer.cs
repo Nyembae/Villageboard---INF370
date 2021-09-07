@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VillageBoard.EntityFrameworkCore;
 
 namespace VillageBoard.Migrations
 {
     [DbContext(typeof(VillageBoardDbContext))]
-    partial class VillageBoardDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210907031143_intial-commit")]
+    partial class intialcommit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1328,23 +1330,6 @@ namespace VillageBoard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AbpWebhookSubscriptions");
-                });
-
-            modelBuilder.Entity("VillageBoard.Announcement_Types.Announcement_Type", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Announcement_Types");
                 });
 
             modelBuilder.Entity("VillageBoard.Authorization.Roles.Role", b =>

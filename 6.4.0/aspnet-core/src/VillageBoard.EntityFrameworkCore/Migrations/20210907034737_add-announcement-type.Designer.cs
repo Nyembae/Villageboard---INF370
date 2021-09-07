@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VillageBoard.EntityFrameworkCore;
 
 namespace VillageBoard.Migrations
 {
     [DbContext(typeof(VillageBoardDbContext))]
-    partial class VillageBoardDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210907034737_add-announcement-type")]
+    partial class addannouncementtype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
