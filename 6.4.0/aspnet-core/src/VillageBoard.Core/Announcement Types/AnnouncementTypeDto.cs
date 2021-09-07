@@ -1,5 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
-using Abp.Domain.Entities;
+using Abp.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace VillageBoard.Announcement_Types
 {
-   
-    public class Announcement_Type : Entity<int>
-
+    [AutoMapFrom(typeof(Announcement_Type))]
+    public class AnnoucementTypeDto : EntityDto<int>
     {
         [Required]
         [MaxLength(150)]
