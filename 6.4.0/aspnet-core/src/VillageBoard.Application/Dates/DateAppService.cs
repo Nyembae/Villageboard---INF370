@@ -7,7 +7,7 @@ namespace VillageBoard.Dates
     {
         public DateAppService(IRepository<Date, int> repository) : base(repository)
         {
-
+            
         }
 
     }
