@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VillageBoard.Order_Statuses
 {
-    class OrderStatusDto : EntityDto<int>
+    public class OrderStatusDto : EntityDto<int>
     {
         [AutoMapFrom(typeof(Order_Status))]
 

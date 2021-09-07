@@ -6,16 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VillageBoard.Order_Statuses
+namespace VillageBoard
 {
-   public  class Order_Status : Entity<int>
+    public class Menu_Type : Entity<int>
     {
         [Required]
-        [MaxLength(225)]
-        public string Description { get; set; }
-
-        [Required]
-        [MaxLength(50)]
         public string Name { get; set; }
     }
 }
