@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VillageBoard.Menu_Types
+namespace VillageBoard.Meal_Types
 {
-   public class MenuTypeAppService : CrudAppService<Menu_Type, MenuTypeDto>
+   public class MealTypeAppService : CrudAppService<Meal_Type, MealTypeDto>
     {
-        public MenuTypeAppService(IRepository<Menu_Type, int> repository) : base(repository)
+        public MealTypeAppService(IRepository<Meal_Type, int> repository) : base(repository)
         {
 
         }
