@@ -14,4 +14,4 @@
   <ItemGroup>
     <ProjectReference Include="..\VillageBoard.Core\VillageBoard.Core.csproj" />
   </ItemGroup>
-</Project>
+  </Project>

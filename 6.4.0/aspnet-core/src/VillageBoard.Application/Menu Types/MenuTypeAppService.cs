@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace VillageBoard.Menu_Types
 {
-   public class MealTypeAppService : CrudAppService<Menu_Type, MenuTypeDto>
+   public class MenuTypeAppService : CrudAppService<Menu_Type, MenuTypeDto>
     {
-        public MealTypeAppService(IRepository<Menu_Type, int> repository) : base(repository)
+        public MenuTypeAppService(IRepository<Menu_Type, int> repository) : base(repository)
         {
 
         }
