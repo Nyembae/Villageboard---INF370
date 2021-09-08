@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VillageBoard
+namespace VillageBoard.Meal_Types
 {
     public class Meal_Type : Entity<int>
     {

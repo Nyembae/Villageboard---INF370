@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VillageBoard
+namespace VillageBoard.Menu_Types
 {
     public class Menu_Type : Entity<int>
     {

@@ -11,70 +11,71 @@ namespace VillageBoard.Room_Inspections
     public class Room_Inspection : Entity<int>
     {
         [Required]
-        public DateTime Date { get; set; }
+        [MaxLength(10)]
+        public string Date { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Curtains { get; set; }
+        public string Curtains { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Curtain_Rail_Hooks { get; set; }
+        public string Curtain_Rail_Hooks { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Globes { get; set; }
+        public string Globes { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Light_Switches { get; set; }
+        public string Light_Switches { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Desk { get; set; }
+        public string Desk { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Chair { get; set; }
+        public string Chair { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Wardrobe_Doors { get; set; }
+        public string Wardrobe_Doors { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Mattress { get; set; }
+        public string Mattress { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Wall_Sockets { get; set; }
+        public string Wall_Sockets { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Room_Door { get; set; }
+        public string Room_Door { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Door_Lock { get; set; }
+        public string Door_Lock { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Mirror { get; set; }
+        public string Mirror { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Ceiling { get; set; }
+        public string Ceiling { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Walls { get; set; }
+        public string Walls { get; set; }
 
         [Required]
         [MaxLength(10)]
-        public DateTime Floor { get; set; }
+        public string Floor { get; set; }
 
         
         [MaxLength(225)]
-        public DateTime Other { get; set; }
+        public string Other { get; set; }
     }
 }
