@@ -1330,6 +1330,41 @@ namespace VillageBoard.Migrations
                     b.ToTable("AbpWebhookSubscriptions");
                 });
 
+            modelBuilder.Entity("VillageBoard.Annoucements.Announcement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Announcement_Type_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Announcement_Type_ID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Announcements");
+                });
+
             modelBuilder.Entity("VillageBoard.Announcement_Types.Announcement_Type", b =>
                 {
                     b.Property<int>("Id")
@@ -1548,6 +1583,33 @@ namespace VillageBoard.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("VillageBoard.Blocks.Block", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ResidenceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResidenceId");
+
+                    b.ToTable("Blocks");
+                });
+
             modelBuilder.Entity("VillageBoard.Campuses.Campus", b =>
                 {
                     b.Property<int>("Id")
@@ -1565,6 +1627,48 @@ namespace VillageBoard.Migrations
                     b.ToTable("Campuses");
                 });
 
+            modelBuilder.Entity("VillageBoard.Carts.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("VillageBoard.Collection_Reminders.Collection_Reminder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Collection_Reminders");
+                });
+
             modelBuilder.Entity("VillageBoard.Dates.Date", b =>
                 {
                     b.Property<int>("Id")
@@ -1578,6 +1682,128 @@ namespace VillageBoard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Dates");
+                });
+
+            modelBuilder.Entity("VillageBoard.Days.Day", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("MealTypeID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MealTypeID");
+
+                    b.ToTable("Day");
+                });
+
+            modelBuilder.Entity("VillageBoard.Disciplinary_Hearings.Disciplinary_Hearing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Venue")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("YearId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("YearId");
+
+                    b.ToTable("Disciplinary_Hearings");
+                });
+
+            modelBuilder.Entity("VillageBoard.Event_Types.Event_Type", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Event_Type");
+                });
+
+            modelBuilder.Entity("VillageBoard.Events.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EventTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte>("Poster")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("ResidenceId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventTypeId");
+
+                    b.HasIndex("ResidenceId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("VillageBoard.Health_Inspection_Statuses.Health_Inspection_Status", b =>
@@ -1614,6 +1840,81 @@ namespace VillageBoard.Migrations
                     b.ToTable("Health_Inspection_Type");
                 });
 
+            modelBuilder.Entity("VillageBoard.Health_Inspections.Health_Inspection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Caugh")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Difficaulty_Breathing")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Fever")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Had_Contact_With_Anyone_with_COVID")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("HealthInpsectionTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HealthInspectionStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Red_Eyes")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Result")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Sore_Throat")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Travelled_to_different_provice")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Travelled_to_high_risk_country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HealthInpsectionTypeId");
+
+                    b.HasIndex("HealthInspectionStatusId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Health_Inspections");
+                });
+
             modelBuilder.Entity("VillageBoard.Item_Types.Item_Type", b =>
                 {
                     b.Property<int>("Id")
@@ -1629,6 +1930,50 @@ namespace VillageBoard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Item_Types");
+                });
+
+            modelBuilder.Entity("VillageBoard.Items.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("ItemTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemTypeId");
+
+                    b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("VillageBoard.Maintainence_Categories.Maintainence_Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Maintainence_Categories");
                 });
 
             modelBuilder.Entity("VillageBoard.Maintainence_Request_Statuses.Maintainence_Request_Status", b =>
@@ -1760,6 +2105,80 @@ namespace VillageBoard.Migrations
                     b.ToTable("AbpTenants");
                 });
 
+            modelBuilder.Entity("VillageBoard.Order_Statuses.Order_Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Order_Statuses");
+                });
+
+            modelBuilder.Entity("VillageBoard.Orders.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("OrderStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderStatusId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("VillageBoard.Payment_Statuses.Payment_Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Payment_Statuses");
+                });
+
             modelBuilder.Entity("VillageBoard.Payment_Types.Payment_Type", b =>
                 {
                     b.Property<int>("Id")
@@ -1775,6 +2194,57 @@ namespace VillageBoard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Payment_Types");
+                });
+
+            modelBuilder.Entity("VillageBoard.Payments.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PaymentStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentStatusId");
+
+                    b.HasIndex("PaymentTypeId");
+
+                    b.ToTable("Payments");
+                });
+
+            modelBuilder.Entity("VillageBoard.Prices.Price", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Prices");
                 });
 
             modelBuilder.Entity("VillageBoard.Product_Types.Product_Type", b =>
@@ -1799,6 +2269,54 @@ namespace VillageBoard.Migrations
                     b.ToTable("Product_Type");
                 });
 
+            modelBuilder.Entity("VillageBoard.Products.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<byte>("Image")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("Payment_TypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SizID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Payment_TypeId");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.HasIndex("SizID");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("VillageBoard.Residence_Types.Residence_Type", b =>
                 {
                     b.Property<int>("Id")
@@ -1819,6 +2337,43 @@ namespace VillageBoard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Residence_Type");
+                });
+
+            modelBuilder.Entity("VillageBoard.Residences.Residence", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<int>("CampusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ResidenceTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CampusId");
+
+                    b.HasIndex("ResidenceTypeId");
+
+                    b.ToTable("Residences");
                 });
 
             modelBuilder.Entity("VillageBoard.Room_Inspections.Room_Inspection", b =>
@@ -1934,6 +2489,38 @@ namespace VillageBoard.Migrations
                     b.ToTable("Room_Statuses");
                 });
 
+            modelBuilder.Entity("VillageBoard.Rooms.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("BlockId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomInsectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Room_Number")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlockId");
+
+                    b.HasIndex("RoomInsectionId");
+
+                    b.HasIndex("RoomStatusId");
+
+                    b.ToTable("Rooms");
+                });
+
             modelBuilder.Entity("VillageBoard.Sizes.Size", b =>
                 {
                     b.Property<int>("Id")
@@ -1949,6 +2536,72 @@ namespace VillageBoard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sizes");
+                });
+
+            modelBuilder.Entity("VillageBoard.Statuses.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("EventId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Statuses");
+                });
+
+            modelBuilder.Entity("VillageBoard.Student_Visitations.Studnet_Visitation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("Application_Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("End_Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Host_Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("Start_Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("Visit_Access")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VisitationApplicaitionStatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("VisitationApplicaitionStatusId");
+
+                    b.ToTable("Student_Visitations");
                 });
 
             modelBuilder.Entity("VillageBoard.Suppliers.Supplier", b =>
@@ -2214,6 +2867,25 @@ namespace VillageBoard.Migrations
                     b.Navigation("WebhookEvent");
                 });
 
+            modelBuilder.Entity("VillageBoard.Annoucements.Announcement", b =>
+                {
+                    b.HasOne("VillageBoard.Announcement_Types.Announcement_Type", "Announcement_Type")
+                        .WithMany("Announcements")
+                        .HasForeignKey("Announcement_Type_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany("Announcements")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Announcement_Type");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("VillageBoard.Authorization.Roles.Role", b =>
                 {
                     b.HasOne("VillageBoard.Authorization.Users.User", "CreatorUser")
@@ -2256,6 +2928,134 @@ namespace VillageBoard.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("VillageBoard.Blocks.Block", b =>
+                {
+                    b.HasOne("VillageBoard.Residences.Residence", "Residence")
+                        .WithMany("Blocks")
+                        .HasForeignKey("ResidenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Residence");
+                });
+
+            modelBuilder.Entity("VillageBoard.Carts.Cart", b =>
+                {
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VillageBoard.Collection_Reminders.Collection_Reminder", b =>
+                {
+                    b.HasOne("VillageBoard.Orders.Order", "Order")
+                        .WithMany("Collection_Reminders")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("VillageBoard.Days.Day", b =>
+                {
+                    b.HasOne("VillageBoard.Meal_Types.Meal_Type", "Meal_Type")
+                        .WithMany("Days")
+                        .HasForeignKey("MealTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Meal_Type");
+                });
+
+            modelBuilder.Entity("VillageBoard.Disciplinary_Hearings.Disciplinary_Hearing", b =>
+                {
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany("Disciplinary_Hearings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Years.Year", "Year")
+                        .WithMany("Disciplinary_Hearing")
+                        .HasForeignKey("YearId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Year");
+                });
+
+            modelBuilder.Entity("VillageBoard.Events.Event", b =>
+                {
+                    b.HasOne("VillageBoard.Event_Types.Event_Type", "Event_Type")
+                        .WithMany("Event")
+                        .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Residences.Residence", "Residence")
+                        .WithMany("Event")
+                        .HasForeignKey("ResidenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany("Event")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event_Type");
+
+                    b.Navigation("Residence");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VillageBoard.Health_Inspections.Health_Inspection", b =>
+                {
+                    b.HasOne("VillageBoard.Health_Inspection_Types.Health_Inpsection_Type", "Health_Inpsection_Type")
+                        .WithMany("Health_Inspections")
+                        .HasForeignKey("HealthInpsectionTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Health_Inspection_Statuses.Health_Inspection_Status", "Health_Inspection_Status")
+                        .WithMany("Health_Inspections")
+                        .HasForeignKey("HealthInspectionStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Health_Inpsection_Type");
+
+                    b.Navigation("Health_Inspection_Status");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VillageBoard.Items.Item", b =>
+                {
+                    b.HasOne("VillageBoard.Item_Types.Item_Type", "Item_Type")
+                        .WithMany("Items")
+                        .HasForeignKey("ItemTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item_Type");
+                });
+
             modelBuilder.Entity("VillageBoard.MultiTenancy.Tenant", b =>
                 {
                     b.HasOne("VillageBoard.Authorization.Users.User", "CreatorUser")
@@ -2281,6 +3081,162 @@ namespace VillageBoard.Migrations
                     b.Navigation("Edition");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("VillageBoard.Orders.Order", b =>
+                {
+                    b.HasOne("VillageBoard.Order_Statuses.Order_Status", "Order_Status")
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany("Orders")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order_Status");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("VillageBoard.Payments.Payment", b =>
+                {
+                    b.HasOne("VillageBoard.Payment_Statuses.Payment_Status", "Payment_Status")
+                        .WithMany("Payments")
+                        .HasForeignKey("PaymentStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Payment_Types.Payment_Type", "Payment_Type")
+                        .WithMany("Payments")
+                        .HasForeignKey("PaymentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment_Status");
+
+                    b.Navigation("Payment_Type");
+                });
+
+            modelBuilder.Entity("VillageBoard.Prices.Price", b =>
+                {
+                    b.HasOne("VillageBoard.Products.Product", "Product")
+                        .WithMany("Price")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("VillageBoard.Products.Product", b =>
+                {
+                    b.HasOne("VillageBoard.Payment_Types.Payment_Type", null)
+                        .WithMany("Products")
+                        .HasForeignKey("Payment_TypeId");
+
+                    b.HasOne("VillageBoard.Product_Types.Product_Type", "Product_Type")
+                        .WithMany()
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Sizes.Size", "Size")
+                        .WithMany("Products")
+                        .HasForeignKey("SizID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Suppliers.Supplier", "Supplier")
+                        .WithMany("Products")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product_Type");
+
+                    b.Navigation("Size");
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("VillageBoard.Residences.Residence", b =>
+                {
+                    b.HasOne("VillageBoard.Campuses.Campus", "Campus")
+                        .WithMany("Residences")
+                        .HasForeignKey("CampusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Residence_Types.Residence_Type", "Residence_Type")
+                        .WithMany("Residences")
+                        .HasForeignKey("ResidenceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campus");
+
+                    b.Navigation("Residence_Type");
+                });
+
+            modelBuilder.Entity("VillageBoard.Rooms.Room", b =>
+                {
+                    b.HasOne("VillageBoard.Blocks.Block", "Block")
+                        .WithMany("Rooms")
+                        .HasForeignKey("BlockId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Room_Inspections.Room_Inspection", "Room_Inspection")
+                        .WithMany("Rooms")
+                        .HasForeignKey("RoomInsectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Room_Statuses.Room_Status", "Room_Status")
+                        .WithMany("Rooms")
+                        .HasForeignKey("RoomStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Block");
+
+                    b.Navigation("Room_Inspection");
+
+                    b.Navigation("Room_Status");
+                });
+
+            modelBuilder.Entity("VillageBoard.Statuses.Status", b =>
+                {
+                    b.HasOne("VillageBoard.Events.Event", "Event")
+                        .WithMany("Statuses")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("VillageBoard.Student_Visitations.Studnet_Visitation", b =>
+                {
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany("Studnet_Visitations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Visitation_Application_Statuses.Visitation_Applicaition_Status", "Visitation_Applicaition_Status")
+                        .WithMany("Studnet_Visitations")
+                        .HasForeignKey("VisitationApplicaitionStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Visitation_Applicaition_Status");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -2332,6 +3288,11 @@ namespace VillageBoard.Migrations
                     b.Navigation("Children");
                 });
 
+            modelBuilder.Entity("VillageBoard.Announcement_Types.Announcement_Type", b =>
+                {
+                    b.Navigation("Announcements");
+                });
+
             modelBuilder.Entity("VillageBoard.Authorization.Roles.Role", b =>
                 {
                     b.Navigation("Claims");
@@ -2341,9 +3302,17 @@ namespace VillageBoard.Migrations
 
             modelBuilder.Entity("VillageBoard.Authorization.Users.User", b =>
                 {
+                    b.Navigation("Announcements");
+
                     b.Navigation("Claims");
 
+                    b.Navigation("Disciplinary_Hearings");
+
+                    b.Navigation("Event");
+
                     b.Navigation("Logins");
+
+                    b.Navigation("Orders");
 
                     b.Navigation("Permissions");
 
@@ -2351,7 +3320,118 @@ namespace VillageBoard.Migrations
 
                     b.Navigation("Settings");
 
+                    b.Navigation("Studnet_Visitations");
+
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("VillageBoard.Blocks.Block", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("VillageBoard.Campuses.Campus", b =>
+                {
+                    b.Navigation("Residences");
+                });
+
+            modelBuilder.Entity("VillageBoard.Event_Types.Event_Type", b =>
+                {
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("VillageBoard.Events.Event", b =>
+                {
+                    b.Navigation("Statuses");
+                });
+
+            modelBuilder.Entity("VillageBoard.Health_Inspection_Statuses.Health_Inspection_Status", b =>
+                {
+                    b.Navigation("Health_Inspections");
+                });
+
+            modelBuilder.Entity("VillageBoard.Health_Inspection_Types.Health_Inpsection_Type", b =>
+                {
+                    b.Navigation("Health_Inspections");
+                });
+
+            modelBuilder.Entity("VillageBoard.Item_Types.Item_Type", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("VillageBoard.Meal_Types.Meal_Type", b =>
+                {
+                    b.Navigation("Days");
+                });
+
+            modelBuilder.Entity("VillageBoard.Order_Statuses.Order_Status", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("VillageBoard.Orders.Order", b =>
+                {
+                    b.Navigation("Collection_Reminders");
+                });
+
+            modelBuilder.Entity("VillageBoard.Payment_Statuses.Payment_Status", b =>
+                {
+                    b.Navigation("Payments");
+                });
+
+            modelBuilder.Entity("VillageBoard.Payment_Types.Payment_Type", b =>
+                {
+                    b.Navigation("Payments");
+
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("VillageBoard.Products.Product", b =>
+                {
+                    b.Navigation("Price");
+                });
+
+            modelBuilder.Entity("VillageBoard.Residence_Types.Residence_Type", b =>
+                {
+                    b.Navigation("Residences");
+                });
+
+            modelBuilder.Entity("VillageBoard.Residences.Residence", b =>
+                {
+                    b.Navigation("Blocks");
+
+                    b.Navigation("Event");
+                });
+
+            modelBuilder.Entity("VillageBoard.Room_Inspections.Room_Inspection", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("VillageBoard.Room_Statuses.Room_Status", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("VillageBoard.Sizes.Size", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("VillageBoard.Suppliers.Supplier", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("VillageBoard.Visitation_Application_Statuses.Visitation_Applicaition_Status", b =>
+                {
+                    b.Navigation("Studnet_Visitations");
+                });
+
+            modelBuilder.Entity("VillageBoard.Years.Year", b =>
+                {
+                    b.Navigation("Disciplinary_Hearing");
                 });
 #pragma warning restore 612, 618
         }

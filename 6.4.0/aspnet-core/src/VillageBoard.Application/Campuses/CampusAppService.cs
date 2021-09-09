@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VillageBoard.Campuses
 {
-    class CampusAppService : CrudAppService<Campus, CampusDto>
+    public class CampusAppService : CrudAppService<Campus, CampusDto>
     {
         public CampusAppService(IRepository<Campus, int> repository) : base(repository)
         {

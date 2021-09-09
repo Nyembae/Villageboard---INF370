@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +11,8 @@ namespace VillageBoard.Time_Slots
 {
     public class TimeSlotDto : EntityDto<int>
     {
+        [AutoMapFrom(typeof(Time_Slot))]
+
         [Required]
         public DateTime Start_Time { get; set; }
         [Required]

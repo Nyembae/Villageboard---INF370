@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Rooms;
 
 namespace VillageBoard.Room_Inspections
 {
@@ -77,5 +78,10 @@ namespace VillageBoard.Room_Inspections
         
         [MaxLength(225)]
         public string Other { get; set; }
+
+        //Child Referecnes
+
+        public IEnumerable<Room> Rooms { get; set; }
+
     }
 }

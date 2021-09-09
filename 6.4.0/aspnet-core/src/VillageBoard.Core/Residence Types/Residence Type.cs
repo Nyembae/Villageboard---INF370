@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Residences;
 
 namespace VillageBoard.Residence_Types
 {
@@ -17,6 +18,10 @@ namespace VillageBoard.Residence_Types
         [Required]
         [MaxLength(150)]
         public string Description { get; set; }
+
+        //Child Refernces 
+        public IEnumerable<Residence> Residences { get; set; }
+
 
     }
 }

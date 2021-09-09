@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Annoucements;
 
 namespace VillageBoard.Announcement_Types
 {
@@ -16,5 +17,7 @@ namespace VillageBoard.Announcement_Types
         [Required]
         [MaxLength(150)]
         public string Description { get; set; }
+
+        public IEnumerable<Announcement> Announcements { get; set; }
     }
 }

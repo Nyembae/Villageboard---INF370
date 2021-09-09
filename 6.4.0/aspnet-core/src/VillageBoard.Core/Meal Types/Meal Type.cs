@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Days;
 
 namespace VillageBoard.Meal_Types
 {
@@ -12,5 +13,9 @@ namespace VillageBoard.Meal_Types
     {
         [Required]
         public string Name { get; set; }
+
+        //Child references
+        public IEnumerable<Day> Days { get; set; }
+
     }
 }

@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Annoucements;
+using VillageBoard.Student_Visitations;
 
 namespace VillageBoard.Visitation_Application_Statuses
 {
@@ -16,6 +18,11 @@ namespace VillageBoard.Visitation_Application_Statuses
         [Required]
         [MaxLength(50)]
         public string Decsription { get; set; }
+
+        //Child References
+
+        public IEnumerable<Studnet_Visitation> Studnet_Visitations { get; set; }
+
 
     }
 }

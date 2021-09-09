@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Rooms;
 
 namespace VillageBoard.Room_Statuses
 {
@@ -13,6 +14,10 @@ namespace VillageBoard.Room_Statuses
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+
+        //Child Referefences
+
+        public IEnumerable<Room> Rooms { get; set; }
 
     }
 }

@@ -23,11 +23,69 @@ using VillageBoard.Meal_Types;
 using VillageBoard.Menu_Types;
 using VillageBoard.Product_Types;
 using VillageBoard.Visitation_Application_Statuses;
+using VillageBoard.Annoucements;
+using VillageBoard.Blocks;
+using VillageBoard.Carts;
+using VillageBoard.Collection_Reminders;
+using VillageBoard.Disciplinary_Hearings;
+using VillageBoard.Events;
+using VillageBoard.Health_Inspections;
+using VillageBoard.Items;
+using VillageBoard.Maintainence_Categories;
+using VillageBoard.Order_Statuses;
+using VillageBoard.Orders;
+using VillageBoard.Payment_Statuses;
+using VillageBoard.Payments;
+using VillageBoard.Prices;
+using VillageBoard.Products;
+using VillageBoard.Residences;
+using VillageBoard.Rooms;
+using VillageBoard.Statuses;
+using VillageBoard.Student_Visitations;
 
 namespace VillageBoard.EntityFrameworkCore
 {
     public class VillageBoardDbContext : AbpZeroDbContext<Tenant, Role, User, VillageBoardDbContext>
     {
+
+        public DbSet<Studnet_Visitation> Student_Visitations { get; set; }
+
+        public DbSet<Status> Statuses { get; set; }
+
+        public DbSet<Room> Rooms { get; set; }
+
+        public DbSet<Residence> Residences { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Price> Prices { get; set; }
+
+        public DbSet<Payment> Payments { get; set; }
+
+        public DbSet<Payment_Status> Payment_Statuses { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Order_Status> Order_Statuses { get; set; }
+
+        public DbSet<Maintainence_Category> Maintainence_Categories { get; set; }
+
+        public DbSet<Item> Items { get; set; }
+
+        public DbSet<Health_Inspection> Health_Inspections { get; set; }
+
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<Disciplinary_Hearing> Disciplinary_Hearings { get; set; }
+
+        public DbSet<Collection_Reminder> Collection_Reminders { get; set; }
+
+        public DbSet<Cart> Carts { get; set; }
+
+        public DbSet<Block> Blocks { get; set; }
+
+        public DbSet<Announcement> Announcements { get; set; }
+
         public DbSet<Announcement_Type> Announcement_Types { get; set; }
         public DbSet<Campus> Campuses { get; set; }
         public DbSet<Item_Type> Item_Types { get; set; }
