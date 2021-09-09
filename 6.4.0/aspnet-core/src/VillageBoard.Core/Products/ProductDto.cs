@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,6 +11,8 @@ namespace VillageBoard.Products
 {
    public class ProductDto : EntityDto<int>
     {
+        [AutoMapFrom(typeof(Product))]
+
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }

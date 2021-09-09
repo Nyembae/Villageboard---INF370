@@ -29,7 +29,7 @@ namespace VillageBoard.Payments
         public Payment_Status Payment_Status { get; set; }
 
         [ForeignKey(nameof(Payment_Type))]
-        public long PaymentTypeId { get; set; }
+        public int PaymentTypeId { get; set; }
         public Payment_Type Payment_Type { get; set; }
 
     }

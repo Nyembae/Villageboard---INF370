@@ -1,4 +1,5 @@
 ﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +12,8 @@ namespace VillageBoard.Annoucements
 {
     public class AnnouncementDto : EntityDto<int>
     {
+        [AutoMapFrom(typeof(Announcement))]
+
         [Required]
         [MaxLength(150)]
         public string Name { get; set; }

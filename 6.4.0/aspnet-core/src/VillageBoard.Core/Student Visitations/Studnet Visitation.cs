@@ -13,6 +13,7 @@ namespace VillageBoard.Student_Visitations
 {
     public class Studnet_Visitation : Entity<int>
     {
+
         [Required]
         [MaxLength(50)]
         public string Host_Name { get; set; }
