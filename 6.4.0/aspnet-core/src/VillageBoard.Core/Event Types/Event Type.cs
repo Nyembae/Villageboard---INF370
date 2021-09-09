@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Events;
 
 namespace VillageBoard.Event_Types
 {
@@ -17,5 +18,10 @@ namespace VillageBoard.Event_Types
         [Required]
         [MaxLength(250)]
         public string Description { get; set; }
+
+        //Child References
+
+        public IEnumerable<Event> Event { get; set; }
+
     }
 }

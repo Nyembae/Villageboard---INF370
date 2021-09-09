@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Disciplinary_Hearings;
 
 namespace VillageBoard.Years
 {
@@ -12,6 +13,11 @@ namespace VillageBoard.Years
     {
         [Required]
         public DateTime Date { get; set; }
+
+        //Child References
+
+        public IEnumerable<Disciplinary_Hearing> Disciplinary_Hearing { get; set; }
+
 
     }
 }

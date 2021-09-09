@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using VillageBoard.Annoucements;
+using VillageBoard.Disciplinary_Hearings;
+using VillageBoard.Events;
+using VillageBoard.Orders;
+using VillageBoard.Student_Visitations;
 
 namespace VillageBoard.Authorization.Users
 {
@@ -29,6 +34,25 @@ namespace VillageBoard.Authorization.Users
             user.SetNormalizedNames();
 
             return user;
+
+
         }
+        public IEnumerable<Announcement> Announcements { get; set; }
+
+        public IEnumerable<Order> Orders { get; set; }
+
+        public IEnumerable<Event> Event { get; set; }
+
+        public IEnumerable<Studnet_Visitation> Studnet_Visitations { get; set; }
+
+        public IEnumerable<Disciplinary_Hearing> Disciplinary_Hearings { get; set; }
+
+
+
+
+
+
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Orders;
 
 namespace VillageBoard.Order_Statuses
 {
@@ -17,5 +18,9 @@ namespace VillageBoard.Order_Statuses
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+
+        //Child References
+        public IEnumerable<Order> Orders { get; set; }
+
     }
 }

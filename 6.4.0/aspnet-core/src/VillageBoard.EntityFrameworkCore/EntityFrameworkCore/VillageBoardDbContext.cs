@@ -23,11 +23,15 @@ using VillageBoard.Meal_Types;
 using VillageBoard.Menu_Types;
 using VillageBoard.Product_Types;
 using VillageBoard.Visitation_Application_Statuses;
+using VillageBoard.Annoucements;
 
 namespace VillageBoard.EntityFrameworkCore
 {
     public class VillageBoardDbContext : AbpZeroDbContext<Tenant, Role, User, VillageBoardDbContext>
     {
+
+        public DbSet<Announcement> Announcements { get; set; }
+
         public DbSet<Announcement_Type> Announcement_Types { get; set; }
         public DbSet<Campus> Campuses { get; set; }
         public DbSet<Item_Type> Item_Types { get; set; }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VillageBoard.Items;
 
 namespace VillageBoard.Item_Types
 {
@@ -13,5 +14,10 @@ namespace VillageBoard.Item_Types
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+
+        //Child References
+
+        public IEnumerable<Item> Items { get; set; }
+
     }
 }

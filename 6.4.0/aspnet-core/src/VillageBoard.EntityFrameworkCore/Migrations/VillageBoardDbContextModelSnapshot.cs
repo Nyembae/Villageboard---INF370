@@ -1330,6 +1330,41 @@ namespace VillageBoard.Migrations
                     b.ToTable("AbpWebhookSubscriptions");
                 });
 
+            modelBuilder.Entity("VillageBoard.Annoucements.Announcement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Announcement_Type_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Announcement_Type_ID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Announcements");
+                });
+
             modelBuilder.Entity("VillageBoard.Announcement_Types.Announcement_Type", b =>
                 {
                     b.Property<int>("Id")
@@ -2214,6 +2249,25 @@ namespace VillageBoard.Migrations
                     b.Navigation("WebhookEvent");
                 });
 
+            modelBuilder.Entity("VillageBoard.Annoucements.Announcement", b =>
+                {
+                    b.HasOne("VillageBoard.Announcement_Types.Announcement_Type", "Announcement_Type")
+                        .WithMany("Announcements")
+                        .HasForeignKey("Announcement_Type_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("VillageBoard.Authorization.Users.User", "User")
+                        .WithMany("Announcements")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Announcement_Type");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("VillageBoard.Authorization.Roles.Role", b =>
                 {
                     b.HasOne("VillageBoard.Authorization.Users.User", "CreatorUser")
@@ -2332,6 +2386,11 @@ namespace VillageBoard.Migrations
                     b.Navigation("Children");
                 });
 
+            modelBuilder.Entity("VillageBoard.Announcement_Types.Announcement_Type", b =>
+                {
+                    b.Navigation("Announcements");
+                });
+
             modelBuilder.Entity("VillageBoard.Authorization.Roles.Role", b =>
                 {
                     b.Navigation("Claims");
@@ -2341,6 +2400,8 @@ namespace VillageBoard.Migrations
 
             modelBuilder.Entity("VillageBoard.Authorization.Users.User", b =>
                 {
+                    b.Navigation("Announcements");
+
                     b.Navigation("Claims");
 
                     b.Navigation("Logins");
